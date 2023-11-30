@@ -1,0 +1,40 @@
+{% extends "baseadmin.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-heading header-text ">
+    <div class="container">
+      <div class="row">
+        <h3>Feedbacks</h3>
+      </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section best-deal">
+        <div class="row">
+            {% for d in data %}
+            {% comment %} <h2>APPROVED CONTRACTORS</h3><br> {% endcomment %}
+            <div class="tab-content pt-5" id="myTabContent">
+                {% comment %} <div class="row"> {% endcomment %}
+                    <div class="col-lg-10 offset-md-1 bg-light">
+                        <div class="info-table">    
+                            <h2 class="pt-0 pb-3 text-success">Feedback {{d.0}}</h2>        
+                            <ul>
+                                <li>First Name<span>{{d.4}}</span></li>
+                                <li>Last Name<span>{{d.3}}</span></li>
+                                <li>Email<span>{{d.2}}</span></li> 
+                                <li><h4>Feedback:</h4><span></span></li>
+                                <li><h5>{{d.1}}</h5></li>
+                                                          
+                            </ul>
+                        </div>                            
+                    </div>
+                {% comment %} </div> {% endcomment %}
+            </div>
+            {% endfor %} 
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'basecustomer.html' %}
+{% block content %}
+
+<style>
+    .tablex {
+        width: 80%;
+        margin: 30px auto;
+        box-sizing: border-box;
+    }
+
+    #center {
+        margin-left: 300px;
+    }
+
+    td img {
+        width: 100px;
+
+    }
+
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+        color: white;
+        background-color: #CE6D06;
+    }
+</style>
+<form method="POST">
+    {% csrf_token %} 
+<div class="form-group my-5 px-5 d-flex flex-row justify-content-center align-items-center">
+    <div class="p-2">
+        <select class="form-control" name="cid" id="sel1">
+            <option disabled selected>--SELECT--</option>
+            {% for d in data %}
+            <option  value="{{d.3}}">{{d.0}}</option>
+
+            {% endfor %}
+        </select>
+    </div>
+    <div class="p-2">
+        <input type="submit" name="submit" value="ASSIGN" class="btn btn-style btn-success text-white">
+    </div>
+</div>
+</form>
+
+
+
+
+<h1 class="text-center">Contractor list</h1>
+
+<table class="table tablex table-dark table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Photo</th>
+            <!-- <th colspan="2">Action</th> -->
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for d in data %}
+            <td>{{d.0}}</td>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td><img src="../static{{d.4}}"></td>
+            <!-- <td><a class="btn btn-style btn-style" href="/assignarchitect?reqid={{d.0}}">Assign </a></td>
+            <td><a class="btn btn-style btn-style" href="/editreq?reqid={{d.0}}">Edit </a></td> -->
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+<script>
+
+    var msg = "{{msg}}";
+    if (msg != "") {
+        alert(msg);
+    }
+
+</script>
+
+{% endblock %}

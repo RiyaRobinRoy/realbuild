@@ -1,0 +1,165 @@
+{% extends "basecontractor.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<center>
+    <h1 class="pt-5">CUSTOMER REQUESTS</h1>
+</center>
+      <div class="pt-5 px-5">
+        <table class="table table-dark table-striped table-bordered">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Bedroom</th>
+                <th>Bathroom</th>
+                <th>Attached</th>
+    
+    
+                <th>Carporch</th>
+                <th>Kitchen</th>
+                <th>Sitout</th>
+    
+                <th>Workarea</th>
+                <th>Floor</th>
+                <th>Sqft</th>
+    
+                <th>Others</th>
+                <th> Date</th>
+                <th colspan="2" class="">ADD PLANS</th>
+    
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                {% for d in data1 %}
+                <td>{{d.14|upper}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.5}}</td>
+                <td>{{d.6}}</td>
+                <td>{{d.7}}</td>
+                <td>{{d.8}}</td>
+                <td>{{d.9}}</td>
+                <td>{{d.10}}</td>
+                <td>{{d.11}}</td>
+                <td>{{d.12}}</td>
+                <td class="pb-3 text-center"><a class="btn btn-style btn-success text-white " href="/contractoraddplan?id={{d.0}}">Add plan</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <center class="pt-5">
+        <h1 class="pt-5">PAYMENT PENDING REQUESTS</h1>
+    </center>
+          <div class="pt-5 px-5">
+            <table class="table table-dark table-striped table-bordered">
+              <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Bedroom</th>
+                    <th>Bathroom</th>
+                    <th>Attached</th>
+        
+        
+                    <th>Carporch</th>
+                    <th>Kitchen</th>
+                    <th>Sitout</th>
+        
+                    <th>Workarea</th>
+                    <th>Floor</th>
+                    <th>Sqft</th>
+        
+                    <th>Others</th>
+                    <th> Date</th>
+                    {% comment %} <th colspan="2" class="">ADD PLANS</th> {% endcomment %}
+        
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for d in data2 %}
+                    <td>{{d.14|upper}}</td>
+                    <td>{{d.2}}</td>
+                    <td>{{d.3}}</td>
+                    <td>{{d.4}}</td>
+                    <td>{{d.5}}</td>
+                    <td>{{d.6}}</td>
+                    <td>{{d.7}}</td>
+                    <td>{{d.8}}</td>
+                    <td>{{d.9}}</td>
+                    <td>{{d.10}}</td>
+                    <td>{{d.11}}</td>
+                    <td>{{d.12}}</td>
+                    {% comment %} <td class="pb-3 text-center"><a class="btn btn-style btn-success text-white " href="/contractoraddplan?id={{d.0}}">Add plan</a></td> {% endcomment %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+<center class="pt-5">
+  <h1 class="pt-5">COMPLETED REQUESTS</h1>
+</center>
+            <div class="pt-5 px-5">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Bedroom</th>
+                      <th>Bathroom</th>
+                      <th>Attached</th>
+          
+          
+                      <th>Carporch</th>
+                      <th>Kitchen</th>
+                      <th>Sitout</th>
+          
+                      <th>Workarea</th>
+                      <th>Floor</th>
+                      <th>Sqft</th>
+          
+                      <th>Others</th>
+                      <th> Date</th>
+                      {% comment %} <th colspan="2" class="">ADD PLANS</th> {% endcomment %}
+          
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      {% for d in data3 %}
+                      <td>{{d.14|upper}}</td>
+                      <td>{{d.2}}</td>
+                      <td>{{d.3}}</td>
+                      <td>{{d.4}}</td>
+                      <td>{{d.5}}</td>
+                      <td>{{d.6}}</td>
+                      <td>{{d.7}}</td>
+                      <td>{{d.8}}</td>
+                      <td>{{d.9}}</td>
+                      <td>{{d.10}}</td>
+                      <td>{{d.11}}</td>
+                      <td>{{d.12}}</td>
+                      {% comment %} <td class="pb-3 text-center"><a class="btn btn-style btn-success text-white " href="/contractoraddplan?id={{d.0}}">Add plan</a></td> {% endcomment %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>   
+    <script>
+      var msg = "{{msg}}"
+      if (msg != "")
+          alert(msg)
+    </script>
+    
+{% endblock %}
+    

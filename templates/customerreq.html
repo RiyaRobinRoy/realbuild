@@ -1,0 +1,215 @@
+{% extends "basecustomer.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="main-banner">
+  <div class="owl-carousel owl-banner">
+    <div class="item item-2">
+     <div class="contact-content mt-auto">
+       <div class="container">
+         <div class="row">   
+           <div class="col-lg-12 col-md-4 offset-md-auto">
+             <form id="contact-form" enctype="multipart/form-data" action="" method="post">
+               {% csrf_token %}
+               <div class="row">
+                 <h3 class="section-heading text-center text-secondary">Requirements</h3>
+                 <div class="col-lg-12">
+                   <fieldset>
+                     <label for="txtBed">Number of Bedrooms</label>
+                     <input type="name" name="txtBed" id="txtBed" placeholder="Number of Bedrooms..." required pattern="[0-9]{1}">
+                   </fieldset>
+                 </div>
+                 <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtBath">Number of Bathrooms</label>
+                    <input type="name" name="txtBath" id="txtBath" placeholder="Number of Bathrooms..." required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtAttached">Number of Attached Bathrooms</label>
+                    <input type="name" name="txtAttached" id="txtAttached" placeholder="Number of Attached Bathrooms..." required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtBath">Do you need Car-Porch</label>
+                    <select class="form-control" name="txtCar" id="sel1">
+                      <option value="yes">Yes</option>
+                      <option values="no">No</option>
+                    </select>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 pt-4">
+                  <fieldset>
+                    <label for="txtKitchen">Number of kitchens</label>
+                    <input type="name" name="txtKitchen" id="txtKitchen" placeholder="Number of kitchens..." required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 ">
+                  <fieldset>
+                    <label for="txtSitout">Do you need Sit out:</label>
+                    <select class="form-control" name="txtSitout" id="sel1">
+                      <option value="yes">Yes</option>
+                      <option values="no">No</option>
+                    </select>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 pt-4">
+                  <fieldset>
+                    <label for="txtWork">Do you need Work are:</label>
+                    <select class="form-control" name="txtWork" id="sel1">
+                      <option value="yes">Yes</option>
+                      <option values="no">No</option>
+                    </select>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 pt-4">
+                  <fieldset>
+                    <label for="txtFloor">Number of floors</label>
+                    <input type="name" name="txtFloor" id="txtFloor" placeholder="Number of floors..." required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtSqft">Area in Sqft</label>
+                    <input type="name" name="txtSqft" id="txtSqft" placeholder="Area in Sqft...">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtOther">Other Requirements</label>
+                    <textarea name="txtOther" id="txtOther" placeholder="Other Requirements..."></textarea>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 offset-md-9 p-3">
+                   <fieldset>
+                     <button type="submit" id="form-submit" class="orange-button">Register</button>
+                   </fieldset>
+                 </div>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+<div class="contact-info pt-3" id="contact">
+<center>
+  <h1> New Requirements</h1>
+</center>
+<div class="pt-5 px-5">
+<table class="table table-success table-striped table-bordered">
+  <thead class="">
+      <tr>
+          <th>Bedroom</th>
+          <th>Bathroom</th>
+          <th>Attached</th>
+
+
+          <th>Carporch</th>
+          <th>Kitchen</th>
+          <th>Sitout</th>
+
+          <th>Workarea</th>
+          <th>Floor</th>
+          <th>Sqft</th>
+
+          <th>Others</th>
+          <th> Date</th>
+          <th>Status</th>
+          <th style="margin:auto 25px;align:center" colspan="2"><center>Action</center></th>
+
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+        {% for d in data %}
+          <td>{{d.2}}</td>
+          <td>{{d.3}}</td>
+          <td>{{d.4}}</td>
+          <td>{{d.5}}</td>
+          <td>{{d.6}}</td>
+          <td>{{d.7}}</td>
+          <td>{{d.8}}</td>
+          <td>{{d.9}}</td>
+          <td>{{d.10}}</td>
+          <td>{{d.11}}</td>
+          <td>{{d.12}}</td>
+          <td>{{d.13}}</td>
+          <td><a  class="btn btn-style btn-style" href="/assigncontractor?reqid={{d.0}}">Assign </a></td>
+          <td><a class="btn btn-style btn-style" href="/editreq?reqid={{d.0}}">Edit </a></td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+<center>
+<h1 style="margin-top: 400px;"> Previous Requirements</h1>
+</center>
+  <div class="pt-5 px-5">
+    <table class="table table-success table-striped table-bordered">
+      <thead>
+        <tr>
+            <th>Bedroom</th>
+            <th>Bathroom</th>
+            <th>Attached</th>
+
+
+            <th>Carporch</th>
+            <th>Kitchen</th>
+            <th>Sitout</th>
+
+            <th>Workarea</th>
+            <th>Floor</th>
+            <th>Sqft</th>
+
+            <th>Others</th>
+            <th> Date</th>
+            <th>Status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            {% for d in data1 %}
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.5}}</td>
+            <td>{{d.6}}</td>
+            <td>{{d.7}}</td>
+            <td>{{d.8}}</td>
+            <td>{{d.9}}</td>
+            <td>{{d.10}}</td>
+            <td>{{d.11}}</td>
+            <td>{{d.12}}</td>
+            <td>{{d.13}}</td>
+        
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  var msg = "{{msg}}"
+  if (msg != "")
+      alert(msg)
+</script>
+
+{% endblock %}

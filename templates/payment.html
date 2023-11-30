@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Payment Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Payment Gateway</h2>
+
+    <form id="payment-form" method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card" placeholder="Card Number" required>
+
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" name="exp" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+            {% for d in data %}
+            <label for="amount">Amount:&nbsp;&nbsp;                
+                <input type="text" name="amt" value="{{d.7}}" readonly>                
+            </label>
+            {% endfor %}
+            <button type="button" onclick="proceedToOTP(event)">Proceed</button>
+        </div><br>
+        <div id="otpSection" style="display: none;">
+            <label for="otp">OTP:</label>
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button type="submit">Pay</button>
+        </div>
+    </form>
+
+</body>
+
+<script>
+    function proceedToOTP(event) {
+        // Validate the required fields before proceeding to OTP section
+        var cardNumber = document.getElementById('card-number').value;
+        var expiryDate = document.getElementById('expiry-date').value;
+        var cvv = document.getElementById('cvv').value;
+
+        if (cardNumber === '' || expiryDate === '' || cvv === '') {
+            alert('Please fill in all the required fields before proceeding.');
+            event.preventDefault(); // Prevent form submission
+        } else {
+            // Show the OTP section
+            document.getElementById('otpSection').style.display = 'block';
+        }
+    }
+</script>
+
+<script>
+    var msg = "{{msg}}"
+    if (msg != "")
+        alert(msg)
+  </script>
+
+</html>
+{% endblock %}

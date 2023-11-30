@@ -1,0 +1,52 @@
+{% extends "basecontractor.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="contact-content mt-auto pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6  col-md-4 offset-md-3">
+                <form id="contact-form" enctype="multipart/form-data" action="" method="post">
+                {% csrf_token %}                
+                <div class="row">
+                    {% for d in data%}
+                    <h3 class="section-heading text-center text-secondary">Estimate for {{d.0|upper}}</h3>
+                    {% endfor %}
+                    <div class="col-lg-12">
+                        <fieldset>
+                          <label for="txtFile">Design</label>
+                          <input type="file" name="txtFile" id="txtFile" required="" class="pt-2">
+                        </fieldset>
+                      </div>
+                    <div class="col-lg-12">
+                        <fieldset>
+                            <label for="txtSqft">Required Sqft</label>
+                            <input type="name" name="txtSqft" id="txtSqft" autocomplete="on" required>
+                        </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                        <fieldset>
+                            <label for="txtCost">Estimated Cost</label>
+                            <input type="name" name="txtCost" id="txtCost" autocomplete="on" required>
+                        </fieldset>
+                    </div>
+                    <div class="col-lg-12 offset-md-4">
+                        <fieldset>
+                            <button type="submit" id="form-submit" class="orange-button">Submit</button>
+                        </fieldset>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var msg = "{{msg}}"
+    if (msg != "")
+        alert(msg)
+  </script>
+
+{% endblock %}

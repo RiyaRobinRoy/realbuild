@@ -1,0 +1,112 @@
+{% extends "basecustomer.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="main-banner">
+  <div class="owl-carousel owl-banner">
+    <div class="item item-2">
+     <div class="contact-content mt-auto">
+       <div class="container">
+         <div class="row">   
+           <div class="col-lg-12 col-md-4 offset-md-auto">
+            {% for d in data %}
+             <form id="contact-form" enctype="multipart/form-data" action="" method="post">
+               {% csrf_token %}
+               
+               <div class="row">
+                 <h3 class="section-heading text-center text-secondary">Requirements</h3>
+                 <div class="col-lg-12">
+                   <fieldset>
+                     <label for="txtBed">Number of Bedrooms</label>
+                     <input type="name" name="t1" id="t1"  value="{{d.2}}" required pattern="[0-9]{1}">
+                   </fieldset>
+                 </div>
+                 <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtBath">Number of Bathrooms</label>
+                    <input type="name" name="t2" id="t2" value="{{d.3}}" required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtAttached">Number of Attached Bathrooms</label>
+                    <input type="name" name="t3" id="t3" value="{{d.4}}" required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="txtBath">Do you need Car-Porch</label>
+                    <select class="form-control" name="t4" value="{{d.5}}" id="sel1">
+                      <option value="yes">Yes</option>
+                      <option values="no">No</option>
+                    </select>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 pt-4">
+                  <fieldset>
+                    <label for="t5">Number of kitchens</label>
+                    <input type="name" name="t5" id="t5" value="{{d.6}}" required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 ">
+                  <fieldset>
+                    <label for="t6">Do you need Sit out:</label>
+                    <select class="form-control" name="t6" value="{{d.7}}" id="sel1">
+                      <option value="yes">Yes</option>
+                      <option values="no">No</option>
+                    </select>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 pt-4">
+                  <fieldset>
+                    <label for="t7">Do you need Work are:</label>
+                    <select class="form-control" name="t7" value="{{d.8}}" id="sel1">
+                      <option value="yes">Yes</option>
+                      <option values="no">No</option>
+                    </select>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 pt-4">
+                  <fieldset>
+                    <label for="t8">Number of floors</label>
+                    <input type="name" name="t8" id="t8" value="{{d.9}}" required pattern="[0-9]{1}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="t9">Area in Sqft</label>
+                    <input type="name" name="t9" id="t9" value="{{d.10}}">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <label for="t10">Other Requirements</label>
+                    <textarea name="t10" id="t10">{{d.11}}</textarea>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12 offset-md-9 p-3">
+                   <fieldset>
+                     <button type="submit" id="form-submit" class="orange-button">Update</button>
+                   </fieldset>
+                 </div>
+               </div>
+               
+             </form>
+             {% endfor %}
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<script>
+    var msg = "{{msg}}"
+    if (msg != "")
+        alert(msg)
+  </script>
+  
+  {% endblock %}

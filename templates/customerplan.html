@@ -1,0 +1,53 @@
+{% extends "basecustomer.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <h3>PLAN DETAILS</h3>
+      </div>
+    </div>
+</div>
+{% for d in data %}
+<div class="container">
+<div class="section best-deal">
+  <div class="row">
+
+    {% comment %} <h2>APPROVED CONTRACTORS</h3><br> {% endcomment %}
+    <div class="tab-content" id="myTabContent">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="info-table">            
+            <ul>
+              {% comment %} <li>Total Flat Space <span>540 m2</span></li>
+              <li>Floor number <span>3</span></li>
+              <li>Number of rooms <span>8</span></li>
+              <li>Parking Available <span>Yes</span></li>
+              <li>Payment Process <span>Bank</span></li> {% endcomment %}
+              
+              {% comment %} <a href=""><img src="../static{{d.4}}" class="img-fluid" alt="Profile photo"></a> {% endcomment %}
+              {% for d in data1 %}  <h3><a href="">{{d.0|upper}}</a></h3><br>  {% endfor %}
+
+                        <li>Estimated Sqft<span>{{d.4}}</span></li>
+                        <li>Estimated Cost<span>{{d.5}}</span></li>
+                        <li>Fees<span>{{d.7}}</span></li>
+                        <br>
+                        <li><a href="../static{{d.3}}"><img src="../static{{d.3}}" class="img-fluid" alt="Design"></a></li>
+                        
+                        <li class="pt-2 pb-5"><span>
+                        <a class="btn btn-outline-success" href="/customerplanapprove?id={{d.0}}&status=approved&url=plandetails&rid={{d.2}}">Approve</a>
+                        <a class="btn btn-outline-danger" href="/customerplanapprove?id={{d.0}}&status=rejected&url=plandetails&rid={{d.2}}">Reject</a>
+                        </li>
+                          {% comment %} <a href="/adminapproveuser?id={{d.3}}&status=-1&url=/admincustomers"  class="btn btn-danger mx-2">Delete</a> {% endcomment %}
+                        </div>
+                        {% endfor %} 
+            </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
